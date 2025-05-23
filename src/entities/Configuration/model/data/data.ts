@@ -1,10 +1,18 @@
 import { SliderStepMark } from "@heroui/slider";
 
+export interface ICPUTypes {
+  id: number;
+  name: string;
+  price: number;
+}
 export interface IConfifurationArray {
   label: string;
   key: string;
   defaultValue: number | number[];
   minValue?: number;
+  isCPU: boolean;
+  measurement: string;
+  cpuTypes?: ICPUTypes[];
   maxValue?: number;
   marks?: SliderStepMark[];
   step?: number;
@@ -14,8 +22,37 @@ export const configurationArray: IConfifurationArray[] = [
   {
     label: "CPU",
     key: "cpu",
+    measurement: "GHz",
+    isCPU: true,
     defaultValue: 6,
     minValue: 2,
+    cpuTypes: [
+      {
+        id: 0,
+        name: "Intel Core i5-12400",
+        price: 200,
+      },
+      {
+        id: 1,
+        name: "AMD Ryzen 5 5600X",
+        price: 250,
+      },
+      {
+        id: 2,
+        name: "Intel Core i7-12700K",
+        price: 350,
+      },
+      {
+        id: 3,
+        name: "AMD Ryzen 9 5900X",
+        price: 450,
+      },
+      {
+        id: 4,
+        name: "Apple M1",
+        price: 300,
+      },
+    ],
     maxValue: 16,
     step: 2,
     marks: [
@@ -32,14 +69,13 @@ export const configurationArray: IConfifurationArray[] = [
   {
     label: "Memory (RAM DDR4)",
     key: "memory",
+    isCPU: false,
+    measurement: "GB",
     defaultValue: 128,
-    minValue: 8,
+    minValue: 64,
     maxValue: 1024,
     step: 8,
     marks: [
-      { value: 8, label: "8" },
-      { value: 16, label: "16" },
-      { value: 32, label: "32" },
       { value: 64, label: "64" },
       { value: 128, label: "128" },
       { value: 256, label: "256" },
@@ -51,6 +87,8 @@ export const configurationArray: IConfifurationArray[] = [
     label: "Storage (SSD RAID)",
     key: "storage",
     defaultValue: 1400,
+    isCPU: false,
+    measurement: "GB",
     minValue: 200,
     maxValue: 1600,
     step: 200,
@@ -68,15 +106,13 @@ export const configurationArray: IConfifurationArray[] = [
   {
     label: "Backup storage (HDD)",
     key: "backup",
+    isCPU: false,
+    measurement: "GB",
     defaultValue: 64,
-    step: 8,
-    minValue: 0,
+    step: 1,
+    minValue: 64,
     maxValue: 1024,
     marks: [
-      { value: 0, label: "0" },
-      { value: 8, label: "8" },
-      { value: 16, label: "16" },
-      { value: 32, label: "32" },
       { value: 64, label: "64" },
       { value: 128, label: "128" },
       { value: 256, label: "256" },
@@ -87,6 +123,8 @@ export const configurationArray: IConfifurationArray[] = [
   {
     label: "Transfer (Gbps)",
     key: "transfer",
+    measurement: "GB",
+    isCPU: false,
     defaultValue: [2, 10],
     step: 1,
     minValue: 1,

@@ -16,7 +16,7 @@ export const ConfigurationCard = memo((props: ConfigurationCardProps) => {
   const { className } = props;
 
   return (
-    <Card className="bg-card w-full p-2 rounded-3xl shadow-none">
+    <Card className="bg-card w-full p-3 rounded-[40px] shadow-none">
       <CardHeader className="w-full flex flex-row items-center justify-between">
         <h4
           className={title({

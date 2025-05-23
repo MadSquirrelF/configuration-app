@@ -11,7 +11,10 @@ export const Page = memo((props: PageProps) => {
 
   return (
     <main
-      className={clsx(`flex flex-grow flex-col h-screen py-8 px-28`, className)}
+      className={clsx(
+        `flex flex-grow flex-col h-screen overflow-x-hidden py-3 px-3 md:py-5 md:px-5 lg:py-8 lg:px-28`,
+        className,
+      )}
     >
       {children}
     </main>
